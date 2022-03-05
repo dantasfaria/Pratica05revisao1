@@ -9,5 +9,13 @@
  * @returns somente os itens definidos.
  */
  export const compact = (items: unknown[]): unknown[] => {
-  return null;
+  const result = [];
+
+for(let i = 0; i <= items.length; i++) {
+  if(items[i]) {
+    result.push(items[i]);
+  }  
+}
+
+return result;
 };
