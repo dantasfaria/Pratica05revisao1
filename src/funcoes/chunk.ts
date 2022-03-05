@@ -1,3 +1,5 @@
+import { arrayBuffer } from "stream/consumers";
+
 /**
  * Cria um array de grupos de elementos divididos em tamanho máximo igual ao parâmetro
  * "tamanho". O último elemento deste novo array deverá conter o restante dos itens,
@@ -12,5 +14,20 @@
  * @returns 
  */
 export const chunk = (valores: number[], tamanho: number): number[][] => {
-  return null;
+  const result = [];
+  let pusher = [];
+
+  for(let i = 0; i <= valores.length; i++) {
+    pusher.push(valores[i]);
+    if(pusher.length === tamanho) {
+      result.push(pusher);
+      pusher = [];
+    }
+  }
+
+  if(pusher.length > 0) {
+    result.push(pusher);
+  }
+
+  return result;
 };
